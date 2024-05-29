@@ -11,7 +11,7 @@ struct DailyBoxOfficeList : Codable {
     let audiAcc : String
     let rank : String
 }
-let name = ["범죄도시4", "쿵푸팬더4", "파묘", "첼린저스", "남은 인생 10년", "고스트 버스터즈 : 오싹한 뉴욕", "듄 : 파트2", "소풍", "레옹", "몬스터 프렌즈"]
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var table: UITableView!
     var movieData : MovieData?
@@ -38,25 +38,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, error in
             if error != nil {
-                print(error!)
                 return
             }
             
             guard let JSONdata = data else { return }
-            print(JSONdata)
+            
             // let dataString = String(data: JSONdata, encoding: .utf8)
             // print(dataString!)
             
             let decode = JSONDecoder()
             do {
                 let decodedData = try decode.decode(MovieData.self, from: JSONdata)
-                print(decodedData.boxOfficeResult.dailyBoxOfficeList[0].movieNm)
                 self.movieData = decodedData
                 DispatchQueue.main.async {
                     self.table.reloadData()
                 }
             } catch {
-                print(error)
             }
         }
         task.resume()
@@ -76,13 +73,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.movieName.text = "[\(mRank)위] \(mName)"
         
         if let aAcc = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiAcc {
-              let numF = NumberFormatter()
-              numF.numberStyle = .decimal
-              let aAcc1 = Int(aAcc)!
-              let result = numF.string(for: aAcc1)!+"명"
-              cell.audiAccumulate.text = "누적 : \(result)"
-              //cell.audiCount.text = "어제:\(aCnt)명"
-          }
+            let numF = NumberFormatter()
+            numF.numberStyle = .decimal
+            let aAcc1 = Int(aAcc)!
+            let result = numF.string(for: aAcc1)!+"명"
+            cell.audiAccumulate.text = "누적 : \(result)"
+            //cell.audiCount.text = "어제:\(aCnt)명"
+        }
         if let aCnt = movieData?.boxOfficeResult.dailyBoxOfficeList[indexPath.row].audiCnt {
             let numF = NumberFormatter()
             numF.numberStyle = .decimal
@@ -103,11 +100,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.description)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination as! DetailViewController
+        let myIndexPath = table.indexPathForSelectedRow!
+        let row = myIndexPath.row
+        dest.movieName = (movieData?.boxOfficeResult.dailyBoxOfficeList[row].movieNm)!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
     
 }
 

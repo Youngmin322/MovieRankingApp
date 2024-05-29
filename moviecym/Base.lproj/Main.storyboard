@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="movieWoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="moviecym" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="102" id="MBA-45-c4F" customClass="MyTableViewCell" customModule="movieWoo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="102" id="MBA-45-c4F" customClass="MyTableViewCell" customModule="moviecym" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBA-45-c4F" id="4dA-Xy-57f">
@@ -38,18 +38,18 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yR5-8A-KAb">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yR5-8A-KAb">
                                                             <rect key="frame" x="196.66666666666663" y="0.0" width="186.33333333333337" height="92"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="누적 관객 수 출력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ue-oS-vUx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="186.33333333333334" height="41"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="186.33333333333334" height="36"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어제 관색 수 출력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovq-HD-Tgt">
-                                                                    <rect key="frame" x="0.0" y="51" width="186.33333333333334" height="41"/>
+                                                                    <rect key="frame" x="0.0" y="56" width="186.33333333333334" height="36"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +72,7 @@
                                             <outlet property="audiAccumulate" destination="1Ue-oS-vUx" id="1FL-ea-gdU"/>
                                             <outlet property="audiCount" destination="ovq-HD-Tgt" id="hIa-ih-PZI"/>
                                             <outlet property="movieName" destination="baM-DW-4ql" id="VPs-Yv-xzL"/>
+                                            <segue destination="eet-SN-jrf" kind="show" identifier="detailView" id="CIN-Ex-Kou"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,22 +94,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="924.4274809160305" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="785" y="-27"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="vXi-Vi-SCd">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="eet-SN-jrf" customClass="DetailViewController" customModule="movieWoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="eet-SN-jrf" customClass="DetailViewController" customModule="moviecym" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jz8-XX-OHv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvI-Ko-zHx">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7xZ-B9-cnd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.76327663349999997" green="0.95136135960000001" blue="0.98302593429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="EvI-Ko-zHx" firstAttribute="leading" secondItem="7xZ-B9-cnd" secondAttribute="leading" id="0XS-eT-2SJ"/>
+                            <constraint firstItem="7xZ-B9-cnd" firstAttribute="bottom" secondItem="EvI-Ko-zHx" secondAttribute="bottom" id="HZo-CW-Ccg"/>
+                            <constraint firstItem="7xZ-B9-cnd" firstAttribute="trailing" secondItem="EvI-Ko-zHx" secondAttribute="trailing" id="PXE-lW-YCL"/>
+                            <constraint firstItem="EvI-Ko-zHx" firstAttribute="top" secondItem="7xZ-B9-cnd" secondAttribute="top" id="ksJ-mv-FKG"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8KK-or-dGO"/>
+                    <connections>
+                        <outlet property="webView" destination="EvI-Ko-zHx" id="ems-pk-ST1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWQ-Hr-K9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1869" y="-27"/>
+            <point key="canvasLocation" x="1592" y="-27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zOc-Nn-aE1">
