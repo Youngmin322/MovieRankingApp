@@ -14,8 +14,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = movieName
-//    let urlString = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%98%81%ED%99%94%EC%88%9C%EC%9C%84"
+        
         let urlKorString =  "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query="+movieName
+        //let urlKorString = "https://www.youtube.com/results?search_query=" + movieName//유튜브
         let urlString = urlKorString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
